@@ -1,0 +1,19 @@
+testcase1:
+  parameter1:
+    - 25
+    - 85
+  parameter2:
+    - 50
+    - 90
+    - 79
+  parameter3:
+    - 50
+    - 90
+
+testcase2:
+  parameter3:
+    - 25
+    - 85
+  parameter4:
+    - 50
+    - 90

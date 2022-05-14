@@ -1,0 +1,15 @@
+{
+    "testcase1": 
+    [
+        {
+            "parameter1" : 10,
+            "parameter2" : 20,
+            "parameter3" : 30
+        },
+        {
+            "parameter1" : 20,
+            "parameter2" : 40,
+            "parameter3" : 60
+        }
+    ]
+}
