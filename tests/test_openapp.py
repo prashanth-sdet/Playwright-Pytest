@@ -24,7 +24,11 @@ class Test_pytest:
         def test_pytest(self, parameter1, parameter2, parameter3):
                 print(parameter1, parameter2, parameter3)
 
-        # @pytest.mark.parametrize("input1,input2", [(1, 8), (1, 6), (1, 42)])
-        # def test_pytest_1(self, input1, input2):
-        #         # print(str(input1) + str(input2))
-        #         pass
+        def test_valid_string(self, stringinput):
+                print(stringinput)
+        
+        def test_compute(self, param1):
+                print(param1)
+        
+        def test_case1(self, testdata_case1):
+                print(testdata_case1)

@@ -10,6 +10,11 @@
             "parameter1" : 20,
             "parameter2" : 40,
             "parameter3" : 60
+        },
+        {
+            "parameter1" : 20,
+            "parameter2" : 40,
+            "parameter3" : 600
         }
     ]
 }

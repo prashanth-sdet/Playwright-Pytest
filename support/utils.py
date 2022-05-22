@@ -9,7 +9,12 @@ def load_data(filename,testcase='default'):
     stringified_params = ''
     list_result = []
 
-    if filename.endswith('.yml'):
+    if filename.endswith('.json'):
+        data = json.load(open(test_data_dir_path + filename))   
+        stringified_params = ','.join(data[testcase][0])
+        list_result = [[item[key] for key in item] for item in data[testcase]]
+
+    elif filename.endswith('.yml'):
         with open(test_data_dir_path + filename) as f:
             data = yaml.load(f, Loader=SafeLoader)
 
@@ -24,33 +29,12 @@ def load_data(filename,testcase='default'):
             if len(data[testcase][key]) < max_length:
                 data[testcase][key].append(data[testcase][key][0])
 
-        for index in range(max_length):
-            temp_list = list()
-            for key in data[testcase]:
-                temp_list.append(data[testcase][key][index])
-            list_result.append(tuple(temp_list))
+        list_result = [[data[testcase][key][index] for key in data[testcase]] for index in range(max_length)]
 
     elif filename.endswith('.csv'):
         with open(test_data_dir_path + filename, newline='') as csvfile:
-            data = csv.reader(csvfile, delimiter=',')
-
-            for index,row in enumerate(data):
-                temp_list = list()            
-                if index==0:
-                    stringified_params = ','.join(row)  
-                else:
-                    for value in row:
-                        temp_list.append(value)
-                    list_result.append(tuple(temp_list))
-
-    elif filename.endswith('.json'):
-        data = json.load(open(test_data_dir_path + filename))   
-        stringified_params = ','.join(data[testcase][0])
-
-        for item in data[testcase]:
-            temp_list = list()
-            for key in item:
-                temp_list.append(item[key])
-            list_result.append(temp_list)
-        
+            data = list(csv.reader(csvfile, delimiter=','))
+            stringified_params = ','.join(data[0])
+            list_result = data[1:]
+            
     return stringified_params, list_result
